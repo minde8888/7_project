@@ -82,7 +82,7 @@ let count = 0;
     console.log(s);*/
 
    /* for(let i=0; i<=n.length; i++ ){
-        s +=n[n.length-i-1]; 
+        s = s+n[n.length-i-1]; 
      }
      console.log(s);*/
 

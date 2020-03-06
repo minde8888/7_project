@@ -1,9 +1,9 @@
-
+"use strict";
 
 console.log('-------------------------------------------')
 
 function isrinktiRaides(raide, nr) {
-    let out;
+    let out = '';
 
     if(typeof(raide) !== "string" && raide.length > 100){
         return 'Pirmojo kintamojo reikšmė yra netinkamo dydžio.';
@@ -12,11 +12,13 @@ function isrinktiRaides(raide, nr) {
     }else if(raide.length < nr)
         return 'Antrasis kintamasis turi būti ne didesnis už pateikto teksto ilgį.';
     else {    
+        
+        for( let i=nr-1; i<raide.length; i=i+nr ){
+            out+=raide[i];
             
-        for( i=nr; i<raide.length; i+nr ){
-            out= out+raide[i];
-            return raide[i];
         }
+        
+        return out;
     }
 }
 
@@ -47,20 +49,56 @@ function didziausiasSkaiciusSarase(sarasas) {
 console.log('-------------------------------------------')
 
 function skaitmenuKiekisSkaiciuje(skaicius) {
-    let result;
-    if(isNaN(skaicius) && typeof (skaicius) !== 'number'){
+    let count = 0;
+    //let modul;
+   // modul = Math.abs(skaicius);
+    
+    //let newModul = replace.modul('.','');
+    //let integer = parseInt(newModul);
+    //String( integer);
+    if(typeof(skaicius)!=='number' ){
+        return 'Pateikta netinkamo tipo reikšmė.';
+    }
+    if(skaicius === Infinity || -skaicius === Infinity ){
         return 'Pateikta netinkamo tipo reikšmė.'
     }
-    else{
-        result = (skaicius + '').length
-        /*for(let i=0; i=skaicius.length; i++)
-        result=result + 1;
-        //a + '' .length*/
+    if(!isFinite(skaicius)){
+        return 'Pateikta netinkamo tipo reikšmė.';
     }
-    return result;
+          
+    
+   let skaiciustextu = skaicius.toString();
+   skaiciustextu = ''+skaicius;
+   count=skaiciustextu.length;
+   if(skaicius < 0){
+    count--;
+    }
+    if(skaicius % 1 !== 0 ){
+        count--;
+    }
+
+    
+   return  count;
 }
  
-console.log(skaitmenuKiekisSkaiciuje(37060123456))
+console.log(skaitmenuKiekisSkaiciuje(5))
+console.log(skaitmenuKiekisSkaiciuje(781))
+console.log(skaitmenuKiekisSkaiciuje(37060123456 ))
+console.log(skaitmenuKiekisSkaiciuje(true))
+console.log(skaitmenuKiekisSkaiciuje('asd'))
+console.log(skaitmenuKiekisSkaiciuje(NaN))
+console.log(skaitmenuKiekisSkaiciuje(null))
+console.log(skaitmenuKiekisSkaiciuje(undefined))
+console.log(skaitmenuKiekisSkaiciuje(Infinity))
+console.log(skaitmenuKiekisSkaiciuje(-Infinity))
+console.log(skaitmenuKiekisSkaiciuje(false))
+console.log(skaitmenuKiekisSkaiciuje([1]))
+console.log(skaitmenuKiekisSkaiciuje(-1987))
+console.log(skaitmenuKiekisSkaiciuje(2.5))
+console.log(skaitmenuKiekisSkaiciuje(-2.5))
+console.log(skaitmenuKiekisSkaiciuje(1555555555555555555555555555555557777777779999998785))
+
+
 
 //taypeof === "number"
 
